@@ -15,6 +15,8 @@ h3 {
 </style>
 </head>
 <body>
+@include('partials.header')
+<x-nav/>
     <h3>CUSTOMER DATA</h3>
     <!--
     <ul>
@@ -54,6 +56,8 @@ h3 {
        @endforeach
   </tbody>
 </table>
+
+@include('partials.footer')
 </body>
 </html>
    

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,15 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/',[CustomerController::class, 'index']);
-
-Route::get('/users',[UserController::class, 'index']);
-Route::get( '/user/{id}',[UserController::class, 'show']);
-Route::get('/customers',[CustomerController::class, 'index']);
 
 
+Route::get('/', [CustomerController::class, 'index'])->middleware('auth');
+
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/register', [UserController::class, 'register']);
+
+Route::post('/login/process', [UserController::class, 'process']);
+Route::post('/store', [UserController::class, 'store']);
+
+
+Route::get('/logout', [UserController::class, 'logout']);
