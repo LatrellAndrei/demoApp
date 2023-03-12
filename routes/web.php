@@ -25,5 +25,5 @@ Route::get('/register', [UserController::class, 'register']);
 Route::post('/login/process', [UserController::class, 'process']);
 Route::post('/store', [UserController::class, 'store']);
 
-
+Route::get('/delete/{id}', [UserController::class, 'delete']);
 Route::get('/logout', [UserController::class, 'logout']);

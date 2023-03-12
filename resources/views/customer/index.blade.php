@@ -42,6 +42,9 @@ h3 {
   </thead>
   <tbody>
     @foreach($customers as $customer)
+      @if(Session::has('success'))
+    {{ Session::get('success') }}
+  @endif
     <tr>
       <th scope="row">{{ $customer->id }}</th>
     
@@ -50,8 +53,12 @@ h3 {
       <td>{{ $customer->email }}</td>
       <td>{{ $customer->contactNumber }}</td>
       <td>{{ $customer->address }}</td>
-      <td><button type="button" class="btn btn-primary">Edit</button></td>
-      <td><button type="button" class="btn btn-primary">Delete</button></td>
+      <td>
+          <form action="delete/{{$customer->id}}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </td>      
+      <td></td>
     </tr>
        @endforeach
   </tbody>
